@@ -20,14 +20,11 @@ void ButtonBackDraw(SDL_Texture* button_back, SDL_Rect button_back_card, int tar
 void RunLevel(SDL_Renderer* renderer, int amount_figure, int scale, SDL_Texture* gridImg, SDL_Texture** elems,
     SDL_Texture* selectedImg, SDL_Event event, TTF_Font* font, SDL_Texture* button_back, int maxMoves, int maxScore) {
     currentLevel = condition;
-    int gridScale = 70;
+
     elem* field = (elem*)malloc(scale * scale * sizeof(elem));
     SDL_Rect selectedElem = { 0,0,0,0 };
     bool isSelectedExist = false;
     SDL_Rect button_back_cord = { 20, 20, 100, 100 };
-    int selectedIndex = -1;
-
-
 
     GenerateInitialField(field, scale, amount_figure, gridScale);
     int remainingMoves = maxMoves;
@@ -65,7 +62,7 @@ void RunLevel(SDL_Renderer* renderer, int amount_figure, int scale, SDL_Texture*
                                 if ((abs(selI - i) == 1 && selJ == j) || (abs(selJ - j) == 1 && selI == i)) {
                                     int secondIndex = i * scale + j;
                                     swap(field[selectedIndex].element, field[secondIndex].element);
-
+                                    
                                     SDL_RenderPresent(renderer);
                                     if (HasMatch(field, scale)) { //если ход выдал три в ряд
                                         Mix_PlayChannel(1, sounds[4], 0);
