@@ -64,7 +64,7 @@ void RunLevel(SDL_Renderer* renderer, int amount_figure, int scale, SDL_Texture*
                                     swap(field[selectedIndex].element, field[secondIndex].element);
                                     
                                     SDL_RenderPresent(renderer);
-                                    if (HasMatch(field, scale)) { //если ход выдал три в р€д
+                                    if (HasMatch(field, scale)) { 
                                         Mix_PlayChannel(1, sounds[4], 0);
                                         SDL_RenderClear(renderer);
                                         FillBackground(renderer, 191, 149, 190, 0);
@@ -97,11 +97,11 @@ void RunLevel(SDL_Renderer* renderer, int amount_figure, int scale, SDL_Texture*
                                         }
 
                                         remainingMoves--;
-                                        // –ендерим поле с пустыми клетками
+                                        
                                         SDL_RenderClear(renderer);
                                         FillBackground(renderer, 191, 149, 190, 0);
                                         ButtonBackDraw(button_back, button_back_cord, 1);
-                                        //обнови счЄт!
+                                        
                                         DrawDynamicUI(renderer, font, remainingMoves, localScore);
 
                                         if (isSelectedExist)
@@ -120,7 +120,7 @@ void RunLevel(SDL_Renderer* renderer, int amount_figure, int scale, SDL_Texture*
                                         SDL_Delay(500);
 
                                         GenerateNewElements(field, scale, amount_figure);
-                                        // ÷епна€ реакци€ Ч убираем новые совпадени€ после генерации
+                                        
                                         while (HasMatch(field, scale)) {
                                             for (int ii = 0; ii < scale; ii++) {
                                                 for (int jj = 0; jj < scale; jj++) {
@@ -147,7 +147,6 @@ void RunLevel(SDL_Renderer* renderer, int amount_figure, int scale, SDL_Texture*
                                                 Mix_PlayChannel(0, sounds[0], 0);
                                             }
 
-                                            // –ендерим после удалени€
                                             SDL_RenderClear(renderer);
                                             FillBackground(renderer, 191, 149, 190, 0);
                                             ButtonBackDraw(button_back, button_back_cord, 1);
@@ -167,10 +166,6 @@ void RunLevel(SDL_Renderer* renderer, int amount_figure, int scale, SDL_Texture*
 
                                             GenerateNewElements(field, scale, amount_figure);
                                         }
-
-
-
-
                                     }
                                     else {
                                         remainingMoves--;

@@ -47,22 +47,6 @@ SDL_Texture* loadTexture(const char* name, SDL_Renderer* renderer) {
 	return texture;
 }
 
-/*Mix_Chunk* loadSound(const char* name) {
-	Mix_Chunk* sound = Mix_LoadWAV(name);
-	if (!sound) {
-		cout << "Ошибка загрузки звука: " << Mix_GetError() << endl;
-	}
-	return sound;
-}
-
-Mix_Music* loadMusic(const char* name) {
-	Mix_Music* music = Mix_LoadMUS(name);
-	if (!music) {
-		cout << "Ошибка загрузки музыки: " << Mix_GetError() << endl;
-	}
-	return music;
-}*/
-
 bool isButtonClicked(const SDL_Rect& rect, const SDL_Event& event, Mix_Chunk* touchSound) {
 	int x = event.button.x;
 	int y = event.button.y;
@@ -85,9 +69,3 @@ void DrawText(SDL_Renderer* render, TTF_Font* font, const char* text, SDL_Color 
 	SDL_DestroyTexture(texture);
 	SDL_FreeSurface(surface);
 }
-
-/*void ButtonBackDraw(SDL_Texture* button_back, SDL_Rect button_back_card, int targetCondition = 0, Mix_Chunk* click = nullptr) {
-	SDL_RenderCopy(renderer, button_back, NULL, &button_back_card);
-	if (event.type == SDL_MOUSEBUTTONDOWN && isButtonClicked(button_back_card, event, click))
-		condition = targetCondition;
-}*/
